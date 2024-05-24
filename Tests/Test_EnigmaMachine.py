@@ -5,16 +5,28 @@ from src.Model.Reflector import Reflector
 
 class TestEnigmaMachine(unittest.TestCase):
     def setUp(self):
+        # Inicializamos los rotores y el reflector con la misma configuración inicial para ambas pruebas
         rotor1 = Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q')
         rotor2 = Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E')
         rotor3 = Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V')
         reflector = Reflector("YRUHQSLDPXNGOKMIEBFZCWVJAT")
         self.machine = EnigmaMachine([rotor1, rotor2, rotor3], reflector)
 
+    def reset_rotors(self):
+        """
+        Resetea los rotores a su posición inicial para asegurar que la decodificación sea correcta.
+        """
+        self.machine.rotors[0].position = 0
+        self.machine.rotors[1].position = 0
+        self.machine.rotors[2].position = 0
+
     def test_encode_decode(self):
         message = "HELLO"
         encoded_message = self.machine.encode(message)
+        self.reset_rotors()  # Reseteamos los rotores antes de la decodificación
         decoded_message = self.machine.decode(encoded_message)
         self.assertEqual(decoded_message, message)
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     unittest.main()
