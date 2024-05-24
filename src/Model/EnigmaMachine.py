@@ -13,12 +13,14 @@ class EnigmaMachine:
     def encode(self, message):
         encoded_message = ""
         for char in message:
-            char = self.plugboard.connect(char)
-            char = self.pass_through_rotors(char, forward=True)
-            char = self.reflector.reflect(char)
-            char = self.pass_through_rotors(char, forward=False)
-            char = self.plugboard.connect(char)
-            self.rotate_rotors()
+            if char.isalpha():
+                char = char.upper()
+                char = self.plugboard.connect(char)
+                char = self.pass_through_rotors(char, forward=True)
+                char = self.reflector.reflect(char)
+                char = self.pass_through_rotors(char, forward=False)
+                char = self.plugboard.connect(char)
+                self.rotate_rotors()
             encoded_message += char
         return encoded_message
 

@@ -24,5 +24,6 @@ class TestFileHandler(unittest.TestCase):
         # Limpiar archivos creados durante las pruebas
         FileHandler.delete_file(self.input_filename)
         FileHandler.delete_file(self.output_filename)
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

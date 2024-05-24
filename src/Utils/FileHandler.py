@@ -1,3 +1,4 @@
+import os
 class FileHandler:
     @staticmethod
     def read_file(filename):
@@ -25,3 +26,14 @@ class FileHandler:
         """
         with open(filename, 'w') as file:
             file.write(content)
+
+    @staticmethod
+    def delete_file(filename):
+        """
+        Elimina un archivo del sistema.
+
+        Args:
+        - filename (str): Nombre del archivo a eliminar.
+        """
+        if os.path.exists(filename):
+            os.remove(filename)

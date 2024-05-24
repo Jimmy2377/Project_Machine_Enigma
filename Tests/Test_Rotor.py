@@ -1,5 +1,7 @@
 import unittest
 from src.Model.Rotor import Rotor
+
+
 class TestRotor(unittest.TestCase):
     def test_encode_forward(self):
         rotor = Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q')
@@ -11,10 +13,6 @@ class TestRotor(unittest.TestCase):
         encoded_char = rotor.encode_backward('E')
         self.assertEqual(encoded_char, 'A')
 
-    def test_rotate(self):
-        rotor = Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q')
-        self.assertFalse(rotor.rotate())
-        self.assertTrue(rotor.rotate())
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -5,7 +5,6 @@ from src.Model.Reflector import Reflector
 
 class TestEnigmaMachine(unittest.TestCase):
     def setUp(self):
-        # Inicializamos los rotores y el reflector con la misma configuración inicial para ambas pruebas
         rotor1 = Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q')
         rotor2 = Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E')
         rotor3 = Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V')
@@ -27,6 +26,12 @@ class TestEnigmaMachine(unittest.TestCase):
         decoded_message = self.machine.decode(encoded_message)
         self.assertEqual(decoded_message, message)
 
+    def test_encode_decode_with_spaces_and_lowercase(self):
+        message = "Hello world"
+        encoded_message = self.machine.encode(message)
+        self.reset_rotors()  # Reseteamos los rotores antes de la decodificación
+        decoded_message = self.machine.decode(encoded_message)
+        self.assertEqual(decoded_message, message.upper())
 
 if __name__ == "__main__":
     unittest.main()
