@@ -9,13 +9,13 @@ class Rotor:
         self.notch = notch
         self.position = 0
 
-    def encode_forward(self, char): # Carácter a codificar
+    def encode_forward(self, char):  # Carácter a codificar
         """
         Codifica un carácter pasándolo a través del rotor en la dirección hacia adelante.
 
         """
         index = (ord(char) - ord('A') + self.position) % 26
-        return self.wiring[index] # Carácter codificado
+        return self.wiring[index]   # Carácter codificado
 
     def encode_backward(self, char):
         """

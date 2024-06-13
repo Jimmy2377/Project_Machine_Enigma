@@ -35,8 +35,6 @@ class EnigmaController:
         """
         Inicializa y retorna el reflector de la máquina Enigma.
 
-        Returns:
-        - Reflector: Reflector de la máquina Enigma.
         """
         return Reflector("YRUHQSLDPXNGOKMIEBFZCWVJAT")
 
@@ -44,8 +42,6 @@ class EnigmaController:
         """
         Inicializa y retorna el plugboard de la máquina Enigma.
 
-        Returns:
-        - Plugboard: Plugboard de la máquina Enigma.
         """
         return Plugboard({'A': 'B', 'B': 'A', 'C': 'D', 'D': 'C'})  # Ejemplo de conexiones
 
